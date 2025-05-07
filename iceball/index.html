@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login de Funcionário</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Login de Funcionário</h1>
+    </header>
+    <main>
+        <section id="login">
+            <h2>Entrar com ID</h2>
+            <form id="login-form">
+                <label for="funcionario-id">ID do Funcionário:</label>
+                <input type="text" id="funcionario-id" placeholder="Digite seu ID" required>
+                <button type="submit">Entrar</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Sorveteria Delícias Geladas</p>
+    </footer>
+
+    <script>
+        const form = document.getElementById('login-form');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const funcionarioId = document.getElementById('funcionario-id').value;
+
+            // Verificar ID (Exemplo simples, ID fictício "123" será aceito)
+            if (funcionarioId === '123') {
+                // Redirecionar para a página de cadastro de produtos
+                window.location.href = 'cadastro_produtos.html';
+            } else {
+                alert('ID inválido!');
+            }
+        });
+    </script>
+</body>
+</html>

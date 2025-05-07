@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movimento de Produtos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="cadastro_produtos.html">Cadastro de Produtos</a></li>
+                <li><a href="cadastro_funcionarios.html">Cadastro de Funcionários</a></li>
+                <li><a href="cadastro_clientes.html">Cadastro de Clientes</a></li>
+                <li><a href="cadastro_servicos.html">Cadastro de Serviços</a></li>
+                <li><a href="movimento_financeiro.html">Movimento Financeiro</a></li>
+                <li><a href="movimento_produtos.html">Movimento de Produtos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="produtos">
+            <h2>Movimento de Produtos</h2>
+            <form>
+                <label for="tipo-mov-produto">Tipo de Movimento</label>
+                <select id="tipo-mov-produto">
+                    <option value="entrada">Entrada</option>
+                    <option value="saida">Saída</option>
+                </select>
+                <label for="produto-movimento">Produto</label>
+                <input type="text" id="produto-movimento" required>
+                <label for="quantidade-movimento">Quantidade</label>
+                <input type="number" id="quantidade-movimento" required>
+                <button type="submit">Registrar Movimento de Produto</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Sorveteria Delícias Geladas</p>
+    </footer>
+</body>
+</html>
