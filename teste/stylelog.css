@@ -1,0 +1,100 @@
+body{
+    margin: 0;
+    font-family:'lora', sans-serif;
+}
+
+.mainlog{
+    width: 100vw;
+    height: 100vh;
+    background: #fcf0d0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.leftlog{
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.leftlog > h1{
+    color: #db8a50;
+    font-size: 3vw;
+}
+.rightlog{
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cardlog{
+    width: 50%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 35px;
+    background: #ffabd8;
+    border-radius: 20px;
+    box-shadow: 0px 10px 40px #ca679c;
+}
+.cardlog > h1{
+    color: #ca679c;
+    font-weight: 800;
+    margin: 0;
+}
+.textfield{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px 0px;
+}
+.textfield > input{
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 5px 10px 40px rgb(15, 24, 36);;
+    padding: 12px;
+    background: rgb(93, 134, 197);
+    color: #ca679c ;
+    font-size: 12pt;
+    outline: none;
+    box-sizing: border-box;
+}
+.textfield > label{
+    color: rgb(177, 215, 250) ;
+    margin-bottom: 10px;
+}
+.textfield > input::placeholder{
+    color:#ca679c;
+}
+.troca{
+    outline: none;
+    color: rgba(200, 235, 248, 0.89);
+    letter-spacing: 1px;
+    cursor: pointer;
+    font-weight: 500;
+    text-align: center;
+}
+.btnlog{
+    width: 85%;
+    padding: 16px 0px;
+    margin: 25px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 5px 10px 20px rgb(15, 24, 36);
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 3px;
+    background: rgba(184, 220, 255, 0.89) ;
+    color: rgb(15, 24, 36);
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}

@@ -186,3 +186,7 @@ h2 {
 .login-form button:hover {
     background-color: #B9826E;
 }
+
+.logo{
+    width: 200px;
+}
