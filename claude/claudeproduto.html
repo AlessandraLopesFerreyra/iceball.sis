@@ -39,27 +39,10 @@
             position: relative;
         }
 
-        .logo {
-            width: 60px;
-            height: 60px;
-            display: inline-block;
-            background-color: #fff;
-            border-radius: 50%;
-            line-height: 60px;
-            font-weight: bold;
-            text-align: center;
-            position: relative;
-        }
-
-        .logo::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 5px;
-            width: 15px;
-            height: 15px;
-            background-color: #8B4513;
-            border-radius: 50%;
+        .logo{
+            height: 60PX;
+            width: 70PX;
+            
         }
 
         /* Menu de navegação */
@@ -88,7 +71,7 @@
         .nav-buttons {
             display: flex;
             width: 100%;
-            justify-content: space-between;
+            justify-content: space-evenly;
         }
 
         .nav-btn {
@@ -171,7 +154,7 @@
         .form-container {
             width: 100%;
             max-width: 800px;
-            border: 2px solid var(--cor-roxo);
+            border: 5px solid var(--cor-rosa);
             border-radius: 10px;
             padding: 20px;
         }
@@ -258,7 +241,8 @@
 <body>
     <!-- Cabeçalho com logo -->
     <header>
-        <div class="logo">ICE</div>
+        <img src="imagens/logo.png" alt="ice" class="logo">
+        <h2>Controle de estoque </h2>
     </header>
 
     <!-- Menu de navegação superior -->
@@ -271,6 +255,7 @@
         <div class="nav-buttons">
             <a href="index.html" class="nav-btn active">Cadastro</a>
             <a href="movimento.html" class="nav-btn">Movimento</a>
+            <a href="pequisa_cliente.html" class="nav-btn">Pesquisa</a>
         </div>
     </nav>
 
@@ -281,8 +266,8 @@
             <ul>
                 <li class="active"><a href="claudeproduto.html">Produto</a></li>
                 <li><a href="claudecliente.html">Cliente</a></li>
-                <li><a href="claudefuncionario.html">Funcionário</a></li>
-                <li><a href="claudeservico.html">Serviço</a></li>
+                <li><a href="funcionario-html.html">Funcionário</a></li>
+                <li><a href="servico-html.html">Serviço</a></li>
             </ul>
         </div>
 
