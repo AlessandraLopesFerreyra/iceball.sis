@@ -32,85 +32,18 @@
 
         /* Título principal */
         h1 {
-            font-size: 2.2rem;
-            margin-bottom: 30px;
+            font-size:30px;
+            margin-bottom:10px;
             color: #3a2618;
             font-weight: bold;
         }
 
-        /* Área do logotipo improvisado */
+        /* Área do logotipo */
         .logo {
             margin: 20px auto 40px;
-            width: 200px;
-            height: 100px;
+            width: 300px;
+            height: 250px;
             position: relative;
-        }
-
-        /* Criando as bolas de sorvete */
-        .ice-cream-scoop {
-            position: absolute;
-            border-radius: 50%;
-        }
-
-        .scoop-1 {
-            width: 80px;
-            height: 80px;
-            background-color: #ffecb3; /* Amarelo claro */
-            left: 60px;
-            top: 0;
-        }
-       
-        .scoop-2 {
-            width: 75px;
-            height: 75px;
-            background-color: #f8bbd0; /* Rosa claro */
-            left: 20px;
-            top: 10px;
-        }
-       
-        .scoop-3 {
-            width: 70px;
-            height: 70px;
-            background-color: #a1887f; /* Marrom claro */
-            left: 100px;
-            top: 15px;
-        }
-
-        /* Criando o calda de chocolate */
-        .topping {
-            position: absolute;
-            width: 20px;
-            height: 30px;
-            background-color: #5d4037; /* Marrom escuro */
-            border-radius: 50% 50% 0 0;
-            transform: rotate(45deg);
-            top: 0;
-            right: 55px;
-        }
-
-        /* Criando o copo de sorvete */
-        .cup {
-            position: absolute;
-            width: 160px;
-            height: 80px;
-            background: repeating-linear-gradient(45deg, #fff, #fff 10px, #ddd 10px, #ddd 20px);
-            border-radius: 0 0 80px 80px;
-            top: 50px;
-            left: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        /* Texto "ICE BALL" no copo */
-        .cup-text {
-            font-size: 24px;
-            font-weight: bold;
-            color: #ff69b4; /* Rosa forte */
-            text-shadow: 1px 1px 2px #000;
-            transform: rotate(-5deg);
-            letter-spacing: 1px;
         }
 
         /* Área do formulário */
@@ -156,11 +89,14 @@
             border-radius: 25px;
             cursor: pointer;
             transition: all 0.3s;
+            width: 100%;
+            display: flex;
+            align-items: center;
         }
 
         /* Efeito de hover no botão */
         .btn-entrar:hover {
-            background-color: #f8bbd0;
+            background-color: #f8cfdd;
         }
 
         /* Efeito da sombra rosa sob o botão */
@@ -168,37 +104,32 @@
             position: relative;
             display: inline-block;
         }
+        .btn-container a{
+            text-decoration: none;
+        }
 
         .btn-shadow {
             position: absolute;
             width: 100%;
             height: 100%;
-            background-color: #f8bbd0;
-            border-radius: 25px;
+            background-color: #fbafca;
+            border-radius: 30px;
             top: 5px;
             left: 0;
             z-index: -1;
         }
+        
     </style>
 </head>
 <body>
     <!-- Container principal -->
     <div class="container">
         <!-- Título principal -->
-        <h1>Seja Bem Vindo(a) ao Controle de Estoque...</h1>
+        <h1>Seja Bem Vindo(a) ao controle de estoque...</h1>
        
-        <!-- Logo improvisado da sorveteria -->
+        <!-- Logo da sorveteria -->
         <div class="logo">
-            <!-- Bolas de sorvete -->
-            <div class="ice-cream-scoop scoop-1"></div>
-            <div class="ice-cream-scoop scoop-2"></div>
-            <div class="ice-cream-scoop scoop-3"></div>
-            <!-- Calda de chocolate -->
-            <div class="topping"></div>
-            <!-- Copo de sorvete -->
-            <div class="cup">
-                <div class="cup-text">ICE BALL</div>
-            </div>
+            <img src="imagens/logo.png" alt="ice" class="logo">
         </div>
        
         <!-- Área do formulário -->
@@ -212,7 +143,7 @@
            
             <!-- Botão para entrar -->
             <div class="btn-container">
-                <button class="btn-entrar">Entrar...</button>
+                <button class="btn-entrar"><a href="claudeproduto.html">Entrar...</a>
                 <div class="btn-shadow"></div>
             </div>
         </div>
