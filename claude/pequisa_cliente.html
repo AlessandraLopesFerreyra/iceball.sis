@@ -36,7 +36,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background-color: #fff6fb;
+            background-color: #fff;
         }
 
         /* Cabeçalho */
@@ -84,7 +84,7 @@
 
         .nav-btn {
             background-color: var(--cor-marrom);
-            color: #fff6fb;
+            color:  #fff;
             border: none;
             border-radius: 15px;
             padding: 5px 20px;
@@ -180,7 +180,7 @@
             border: 5px solid #fdb4ce;
             border-radius: 14px;
             padding: 15px;
-            background-color: #fff6fb;
+            background-color:  #fff;
             min-height: 500px;
         }
 
@@ -327,8 +327,189 @@
             content: "🗑️";
             margin-right: 5px;
         }
+/* Estilos do Footer */
+        .footer {
+        background-color: var(--cor-creme);
+        border-top: 3px solid var(--cor-rosa);
+        padding: 20px 0 0 0;
+        
+        }
 
-         
+        .footer-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        }
+
+        .footer-section {
+        flex: 1;
+        min-width: 200px;
+        margin-bottom: 20px;
+        padding: 0 15px;
+        }
+
+        .footer-logo {
+        height: 50px;
+        width: 60px;
+        margin-bottom: 10px;
+        }
+
+        .company-info h3 {
+        color: var(--cor-marrom);
+        margin-bottom: 10px;
+        }
+
+        .company-info p {
+        color: var(--cor-texto);
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+        }
+
+        .footer-section h4 {
+        color: var(--cor-marrom);
+        margin-bottom: 15px;
+        padding-bottom: 5px;
+        border-bottom: 2px solid var(--cor-rosa);
+        display: inline-block;
+        }
+
+        .footer-section ul {
+        list-style: none;
+        }
+
+        .footer-section ul li {
+        margin-bottom: 8px;
+        }
+
+        .footer-section a {
+        color: var(--cor-texto);
+        text-decoration: none;
+        transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+        color: var(--cor-marrom);
+        text-decoration: underline;
+        }
+
+        .contact p {
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        }
+
+        .location-icon::before,
+        .phone-icon::before,
+        .email-icon::before {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 8px;
+        background-color: var(--cor-marrom);
+        border-radius: 50%;
+        }
+
+        .social-icons {
+        display: flex;
+        gap: 15px;
+        }
+
+        .social-icon {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        width: 32px;
+        height: 32px;
+        background-color: var(--cor-marrom);
+        border-radius: 50%;
+        transition: transform 0.3s, background-color 0.3s;
+        position: relative;
+        }
+
+        .social-icon:hover {
+        transform: translateY(-3px);
+        background-color: var(--cor-rosa);
+        }
+
+        .footer-bottom {
+        background-color: var(--cor-marrom);
+        color: white;
+        text-align: center;
+        padding: 15px 0;
+        margin-top: 20px;
+        font-size: 0.9rem;
+        }
+
+        .footer-bottom-links {
+        margin-top: 10px;
+        }
+
+        .footer-bottom-links a {
+        color: white;
+        text-decoration: none;
+        padding: 0 10px;
+        }
+
+        .footer-bottom-links a:hover {
+        text-decoration: underline;
+        }
+
+        .separator {
+        color: var(--cor-rosa);
+        }
+
+        .paia{
+            width:60px;
+
+        }
+
+        .logofooter{
+            width: 25px;
+            margin:auto;
+
+        }
+        /* Botão de fechar sistema */
+        .btn-fechar {
+            padding: 12px 50px;
+            font-size: 1.2rem;
+            background-color: white;
+            color: #3a2618;
+            border: 2px solid #fdb4ce;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-fechar a{
+            text-decoration: none;
+            color: #333;
+        }
+        /* Efeito de hover no botão */
+        .btn-fechar:hover {
+            background-color: #f8cfdd;
+        }
+
+        /* Efeito da sombra rosa sob o botão */
+        .btn-container {
+            margin-top: 25px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .btn-shadow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #fdb4ce;
+            border-radius: 25px;
+            top: 5px;
+            left: 0;
+            z-index: -1;
+        }
+
         /* Responsividade */
         @media (max-width: 1200px) {
             .columns-container {
@@ -517,6 +698,11 @@
                     </div>
                 </div>
             </div>
+                    <!-- Botão para fechar o sistema -->
+                    <div class="btn-container">
+                        <button class="btn-fechar"><a href="fechamento_sistema.html"> Fechar Sistema</a></button>
+                        <div class="btn-shadow"></div>
+                    </div>
         </div>
     </div>
     <!-- Footer -->

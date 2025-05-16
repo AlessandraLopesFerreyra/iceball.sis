@@ -4,13 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Gerenciamento - Movimento Financeiro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Sour+Gummy:wdth,wght@100..125,377&display=swap" rel="stylesheet">
+        
     <style>
         /* Reset básico */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: "Sour Gummy", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 377;
+            font-style: normal;
         }
 
         /* Cores principais */
@@ -518,6 +525,44 @@
             margin:auto;
 
         }
+
+        /* Botão de fechar sistema */
+        .btn-fechar {
+            padding: 12px 50px;
+            font-size: 1.2rem;
+            background-color: white;
+            color: #3a2618;
+            border: 2px solid #fdb4ce;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-fechar a{
+            text-decoration: none;
+            color: #333;
+        }
+        /* Efeito de hover no botão */
+        .btn-fechar:hover {
+            background-color: #f8cfdd;
+        }
+
+        /* Efeito da sombra rosa sob o botão */
+        .btn-container {
+            margin-top: 25px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .btn-shadow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #fdb4ce;
+            border-radius: 25px;
+            top: 5px;
+            left: 0;
+            z-index: -1;
+        }
         
         /* Responsividade */
         @media (max-width: 992px) {
@@ -587,22 +632,10 @@
     <nav>
         <div class="nav-buttons">
             <a href="claudeproduto.html" class="nav-btn">Cadastro</a>
-            <a href="movimento_financeiro.html" class="nav-btn">Movimento</a>
-            <a href="pequisa_cliente.html" class="nav-btn active">Pesquisa</a>
+            <a href="movimento_financeiro.html" class="nav-btn active">Movimento</a>
+            <a href="pequisa_cliente.html" class="nav-btn">Pesquisa</a>
         </div>
     </nav>
-
-    <!-- Container principal -->
-    <div class="content-container">
-        <!-- Menu lateral -->
-        <div class="sidebar">
-            <ul>
-                <li><a href="claudeproduto.html">Produto</a></li>
-                <li class="active"><a href="claudecliente.html">Cliente</a></li>
-                <li><a href="funcionario-html.html">Funcionário</a></li>
-                <li><a href="servico-html.html">Serviço</a></li>
-            </ul>
-        </div>
 
         <!-- Conteúdo principal -->
         <div class="main-content">
@@ -865,6 +898,11 @@
                     </tbody>
                 </table>
             </div>
+            <!-- Botão para fechar o sistema -->
+                    <div class="btn-container">
+                        <button class="btn-fechar"><a href="fechamento_sistema.html"> Fechar Sistema</a></button>
+                        <div class="btn-shadow"></div>
+                    </div>
         </div>
     </div>
     <!-- Footer -->
