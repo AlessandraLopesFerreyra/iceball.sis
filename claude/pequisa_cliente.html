@@ -20,9 +20,8 @@
             --cor-marrom: #a67b5b;
             --cor-borda: #a67b5b;
             --cor-texto: #333;
-            --cor-roxo: #7F00FF;
-            --cor-verde: #4CAF50;
-            --cor-vermelho: #f44336;
+            --cor-verde: #5ec962;
+            --cor-vermelho: #ff4949;
         }
 
         /* Layout principal */
@@ -30,7 +29,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background-color: #fff;
+            background-color: #fff6fb;
         }
 
         /* Cabeçalho */
@@ -43,8 +42,7 @@
         /* Área do logotipo */
         .logo {
             margin: 20px auto 40px;
-            width: 300px;
-            height: 250px;
+            width:150px;
             position: relative;
         }
         /* Menu de navegação */
@@ -73,12 +71,12 @@
         .nav-buttons {
             display: flex;
             width: 100%;
-            justify-content: space-between;
+            justify-content: space-evenly;
         }
 
         .nav-btn {
             background-color: var(--cor-marrom);
-            color: white;
+            color: #fff6fb;
             border: none;
             border-radius: 15px;
             padding: 5px 20px;
@@ -94,7 +92,7 @@
         }
 
         .nav-btn.active {
-            background-color: #654321;
+            background-color: #684119;
         }
 
         /* Layout principal de conteúdo */
@@ -171,10 +169,10 @@
         /* Coluna de pesquisa */
         .search-column, .form-column, .details-column {
             flex: 1;
-            border: 2px solid var(--cor-roxo);
-            border-radius: 10px;
+            border: 5px solid #fdb4ce;
+            border-radius: 14px;
             padding: 15px;
-            background-color: #fff;
+            background-color: #fff6fb;
             min-height: 500px;
         }
 
@@ -186,7 +184,7 @@
             border: 1px solid var(--cor-borda);
             border-radius: 20px;
             padding: 5px 10px;
-            background-color: #fff;
+            background-color: #fff6fb;
         }
 
         .search-box input {
@@ -229,7 +227,7 @@
         }
 
         .add-btn:hover {
-            background-color: #45a049;
+            background-color: #53bd58;
         }
 
         .add-btn::before {
@@ -254,12 +252,11 @@
         }
 
         .client-item:hover {
-            background-color: #f0f0f0;
+            background-color: #fff4de;
         }
 
         .client-item.active {
-            background-color: #e6e6e6;
-            border-color: var(--cor-roxo);
+            background-color:  #fff4de;
         }
 
         /* Formulário de cliente */
@@ -373,7 +370,7 @@
         <div class="nav-buttons">
             <a href="claudeproduto.html" class="nav-btn">Cadastro</a>
             <a href="movimento_financeiro.html" class="nav-btn">Movimento</a>
-            <a href="#" class="nav-btn active">Pesquisa</a>
+            <a href="pequisa_cliente.html" class="nav-btn active">Pesquisa</a>
         </div>
     </nav>
 
@@ -417,7 +414,7 @@
                     </div>
                     
                     <!-- Coluna de formulário -->
-                    <div class="form-column">
+                    <!--<div class="form-column">
                         <h3 class="form-title">Adicionar Cliente</h3>
                         <form>
                             <div class="form-group">
@@ -461,7 +458,7 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
+                    </div>-->
                     
                     <!-- Coluna de detalhes -->
                     <div class="details-column">
