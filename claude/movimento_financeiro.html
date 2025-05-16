@@ -42,26 +42,8 @@
         }
 
         .logo {
-            width: 60px;
-            height: 60px;
-            display: inline-block;
-            background-color: #fff;
-            border-radius: 50%;
-            line-height: 60px;
-            font-weight: bold;
-            text-align: center;
-            position: relative;
-        }
-
-        .logo::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 5px;
-            width: 15px;
-            height: 15px;
-            background-color: #8B4513;
-            border-radius: 50%;
+           height: 60px;
+           width: 70px;
         }
 
         /* Menu de navegação */
@@ -90,7 +72,7 @@
         .nav-buttons {
             display: flex;
             width: 100%;
-            justify-content: space-between;
+            justify-content: space-evenly;
         }
 
         .nav-btn {
@@ -173,7 +155,7 @@
         .form-container {
             width: 100%;
             max-width: 900px;
-            border: 2px solid var(--cor-roxo);
+            border: 5px solid var(--cor-rosa);
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 30px;
@@ -183,7 +165,7 @@
             font-size: 24px;
             text-align: center;
             margin-bottom: 20px;
-            color: var(--cor-roxo);
+            color: var(--cor-preto);
         }
 
         .form-group {
@@ -337,13 +319,13 @@
         }
 
         .total-despesas {
-            background-color: rgba(244, 67, 54, 0.1);
+            background-color: rgba(67, 41, 29, 0.1);
             border: 1px solid var(--cor-vermelho);
         }
 
         .total-saldo {
-            background-color: rgba(127, 0, 255, 0.1);
-            border: 1px solid var(--cor-roxo);
+            border: 1px solid #370b63;
+            background-color: rgba(176, 180, 253, 0.644);
         }
 
         /* Filtros */
@@ -391,6 +373,152 @@
             background-color: #8B5A2B;
         }
 
+        /* Estilos do Footer */
+        .footer {
+        background-color: var(--cor-creme);
+        border-top: 3px solid var(--cor-rosa);
+        padding: 20px 0 0 0;
+        
+        }
+
+        .footer-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        }
+
+        .footer-section {
+        flex: 1;
+        min-width: 200px;
+        margin-bottom: 20px;
+        padding: 0 15px;
+        }
+
+        .footer-logo {
+        height: 50px;
+        width: 60px;
+        margin-bottom: 10px;
+        }
+
+        .company-info h3 {
+        color: var(--cor-marrom);
+        margin-bottom: 10px;
+        }
+
+        .company-info p {
+        color: var(--cor-texto);
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+        }
+
+        .footer-section h4 {
+        color: var(--cor-marrom);
+        margin-bottom: 15px;
+        padding-bottom: 5px;
+        border-bottom: 2px solid var(--cor-rosa);
+        display: inline-block;
+        }
+
+        .footer-section ul {
+        list-style: none;
+        }
+
+        .footer-section ul li {
+        margin-bottom: 8px;
+        }
+
+        .footer-section a {
+        color: var(--cor-texto);
+        text-decoration: none;
+        transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+        color: var(--cor-marrom);
+        text-decoration: underline;
+        }
+
+        .contact p {
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        }
+
+        .location-icon::before,
+        .phone-icon::before,
+        .email-icon::before {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 8px;
+        background-color: var(--cor-marrom);
+        border-radius: 50%;
+        }
+
+        .social-icons {
+        display: flex;
+        gap: 15px;
+        }
+
+        .social-icon {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        width: 32px;
+        height: 32px;
+        background-color: var(--cor-marrom);
+        border-radius: 50%;
+        transition: transform 0.3s, background-color 0.3s;
+        position: relative;
+        }
+
+        .social-icon:hover {
+        transform: translateY(-3px);
+        background-color: var(--cor-rosa);
+        }
+
+        .footer-bottom {
+        background-color: var(--cor-marrom);
+        color: white;
+        text-align: center;
+        padding: 15px 0;
+        margin-top: 20px;
+        font-size: 0.9rem;
+        }
+
+        .footer-bottom-links {
+        margin-top: 10px;
+        }
+
+        .footer-bottom-links a {
+        color: white;
+        text-decoration: none;
+        padding: 0 10px;
+        }
+
+        .footer-bottom-links a:hover {
+        text-decoration: underline;
+        }
+
+        .separator {
+        color: var(--cor-rosa);
+        }
+
+        .paia{
+            width:60px;
+
+        }
+
+        .logofooter{
+            width: 25px;
+            margin:auto;
+
+        }
+        
         /* Responsividade */
         @media (max-width: 992px) {
             .totals-container {
@@ -451,19 +579,16 @@
 <body>
     <!-- Cabeçalho com logo -->
     <header>
-        <div class="logo">ICE</div>
+        <img src="imagens/logo.png" alt="ice" class="logo">
+        <h2>Sistema de controle de estoque</h2>
     </header>
 
     <!-- Menu de navegação superior -->
     <nav>
-        <div class="menu-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
         <div class="nav-buttons">
-            <a href="index.html" class="nav-btn">Cadastro</a>
-            <a href="movimento.html" class="nav-btn active">Movimento</a>
+            <a href="claudeproduto.html" class="nav-btn">Cadastro</a>
+            <a href="movimento_financeiro.html" class="nav-btn">Movimento</a>
+            <a href="pequisa_cliente.html" class="nav-btn active">Pesquisa</a>
         </div>
     </nav>
 
@@ -472,10 +597,10 @@
         <!-- Menu lateral -->
         <div class="sidebar">
             <ul>
-                <li><a href="movimento_financeiro.html">Financeiro</a></li>
-                <li><a href="movimento_estoque.html">Estoque</a></li>
-                <li><a href="movimento_vendas.html">Vendas</a></li>
-                <li><a href="movimento_compras.html">Compras</a></li>
+                <li><a href="claudeproduto.html">Produto</a></li>
+                <li class="active"><a href="claudecliente.html">Cliente</a></li>
+                <li><a href="funcionario-html.html">Funcionário</a></li>
+                <li><a href="servico-html.html">Serviço</a></li>
             </ul>
         </div>
 
@@ -742,5 +867,53 @@
             </div>
         </div>
     </div>
+    <!-- Footer -->
+    <footer class="footer">
+    <div class="footer-container">
+    <div class="footer-section company-info">
+    <div class="paia">
+            <img src="imagens/paia.png" alt="empresa" class="paia">
+        </div>
+    <h3>PAIA Sistems</h3>
+    <p>Soluções inteligentes para controle de estoque</p>
+    </div>
+
+    <div class="footer-section links">
+    <h4>Links Rápidos</h4>
+    <ul>
+    <li><a href="index.html">Início</a></li>
+    <li><a href="sobre.html">Sobre Nós</a></li>
+    <li><a href="servicos.html">Serviços</a></li>
+    <li><a href="contato.html">Contato</a></li>
+    </ul>
+    </div>
+
+    <div class="footer-section contact">
+    <h4>Contato</h4>
+    <p><i class="location-icon"></i> Av. Tecnologia, 1500 - Centro</p>
+    <p><i class="phone-icon"></i> (45) 3456-7890</p>
+    <p><i class="email-icon"></i> paia@paiasistems.com.br</p>
+    </div>
+
+    <div class="footer-section social">
+    <h4>Redes Sociais</h4>
+    <div class="social-icons">
+    <a href="#" class="social-icon facebook"><img src="imagens/face.png" class="logofooter"></a>
+    <a href="#" class="social-icon instagram"><img src="imagens/insta.png" class="logofooter"></a>
+    <a href="#" class="social-icon linkedin"><img src="imagens/linkedin.png" class="logofooter"></a>
+    <a href="#" class="social-icon tiktok"><img src="imagens/tktk.png" class="logofooter"></a>
+    </div>
+    </div>
+    </div>
+
+    <div class="footer-bottom">
+    <p>&copy; 2025 PAIA Sistems - Todos os direitos reservados</p>
+    <div class="footer-bottom-links">
+    <a href="#">Política de Privacidade</a>
+    <span class="separator">|</span>
+    <a href="#">Termos de Uso</a>
+    </div>
+    </div>
+    </footer>
 </body>
 </html>
