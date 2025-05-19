@@ -357,27 +357,7 @@
             margin:auto;
 
         }
-        /* Botão de fechar sistema */
-        .btn-fechar {
-            padding: 12px 50px;
-            font-size: 1.2rem;
-            background-color: white;
-            color: #3a2618;
-            border: 2px solid #fdb4ce;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .btn-fechar a{
-            text-decoration: none;
-            color: #333;
-        }
-        /* Efeito de hover no botão */
-        .btn-fechar:hover {
-            background-color: #f8cfdd;
-        }
-
-        /* Efeito da sombra rosa sob o botão */
+        /* Botões */
         .btn-container {
             margin-top: 25px;
             position: relative;
@@ -394,7 +374,76 @@
             left: 0;
             z-index: -1;
         }
-
+        
+        /* Botão de cadastrar (NOVO) */
+        .form-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .btn-cadastrar {
+            padding: 12px 50px;
+            font-size: 1rem;
+            background-color: white;
+            color: #3a2618;
+            border: 2px solid var(--cor-rosa);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .btn-cadastrar:hover {
+            background-color: #f8cfdd;
+        }
+        
+        .btn-shadow-cadastrar {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #fdb4ce;
+            border-radius: 25px;
+            top: 5px;
+            left: 0;
+            z-index: 0;
+        }
+        
+        /* Botão de fechar sistema */
+        .btn-fechar {
+            padding: 12px 50px;
+            font-size: 1.2rem;
+            background-color: white;
+            color: #3a2618;
+            border: 2px solid #fdb4ce;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 1;
+            position: relative;
+        }
+        
+        .btn-fechar a {
+            text-decoration: none;
+            color: #333;
+        }
+        
+        .btn-fechar:hover {
+            background-color: #f8cfdd;
+        }
+        
+        .buttons-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .button-container {
+            position: relative;
+            margin: 0 15px;
+        }
         /* Responsividade */
         @media (max-width: 768px) {
             .content-container {
@@ -455,7 +504,6 @@
             </ul>
         </div>
 
-        <!-- Conteúdo principal -->
         <div class="main-content">
             <div>
                 <!-- Formulário de Produto -->
@@ -493,13 +541,24 @@
                             <label for="descricaoProduto">Descrição:</label>
                             <textarea id="descricaoProduto" name="descricaoProduto"></textarea>
                         </div>
+                        
+                        <!-- Botão Cadastrar dentro do formulário (NOVO) -->
+                        <div class="form-buttons">
+                            <div class="button-container">
+                                <button type="submit" class="btn-cadastrar">Cadastrar Produto</button>
+                                <div class="btn-shadow"></div>
+                            </div>
+                        </div>
                     </form>
                 </div>
-            <!-- Botão para fechar o sistema -->
-                    <div class="btn-container">
-                        <button class="btn-fechar"><a href="fechamento_sistema.html"> Fechar Sistema</a></button>
+                
+                <!-- Botões externos ao formulário -->
+                <div class="buttons-wrapper">
+                    <div class="button-container">
+                        <button class="btn-fechar"><a href="fechamento_sistema.html">Fechar Sistema</a></button>
                         <div class="btn-shadow"></div>
                     </div>
+                </div>
             </div>
         </div>
     </div>

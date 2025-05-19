@@ -152,8 +152,9 @@
             flex: 1;
             padding: 20px;
             display: flex;
+            flex-direction: column;
             justify-content: center;
-            align-items: flex-start;
+            align-items: center;
         }
 
         /* Formulário de funcionário */
@@ -163,6 +164,7 @@
             border: 5px solid var(--cor-rosa);
             border-radius: 10px;
             padding: 20px;
+            margin-bottom: 30px;
         }
 
         .form-title {
@@ -210,6 +212,96 @@
             background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
             background-repeat: no-repeat;
             background-position: right 10px center;
+        }
+
+        /* Botões */
+        .btn-container {
+            margin-top: 25px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .btn-shadow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #fdb4ce;
+            border-radius: 25px;
+            top: 5px;
+            left: 0;
+            z-index: -1;
+        }
+        
+        /* Botão de cadastrar */
+        .form-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .btn-cadastrar {
+            padding: 12px 50px;
+            font-size: 1rem;
+            background-color: white;
+            color: #3a2618;
+            border: 2px solid var(--cor-rosa);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .btn-cadastrar:hover {
+            background-color: #f8cfdd;
+        }
+        
+        .btn-shadow-cadastrar {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #fdb4ce;
+            border-radius: 25px;
+            top: 5px;
+            left: 0;
+            z-index: 0;
+        }
+        
+        /* Botão de fechar sistema */
+        .btn-fechar {
+            padding: 12px 50px;
+            font-size: 1.2rem;
+            background-color: white;
+            color: #3a2618;
+            border: 2px solid #fdb4ce;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 1;
+            position: relative;
+        }
+        
+        .btn-fechar a {
+            text-decoration: none;
+            color: #333;
+        }
+        
+        .btn-fechar:hover {
+            background-color: #f8cfdd;
+        }
+        
+        .buttons-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+            margin-bottom: 30px;
+            width: 100%;
+        }
+        
+        .button-container {
+            position: relative;
+            margin: 0 15px;
         }
 
         /* Estilos do Footer */
@@ -412,8 +504,8 @@
         <div class="sidebar">
             <ul>
                 <li><a href="claudeproduto.html">Produto</a></li>
-                <li class="active"><a href="claudecliente.html">Cliente</a></li>
-                <li><a href="funcionario-html.html">Funcionário</a></li>
+                <li><a href="claudecliente.html">Cliente</a></li>
+                <li class="active"><a href="funcionario-html.html">Funcionário</a></li>
                 <li><a href="servico-html.html">Serviço</a></li>
             </ul>
         </div>
@@ -472,7 +564,23 @@
                         <label for="enderecoFuncionario">Endereço:</label>
                         <textarea id="enderecoFuncionario" name="enderecoFuncionario"></textarea>
                     </div>
+                    
+                    <!-- Botão Cadastrar dentro do formulário -->
+                    <div class="form-buttons">
+                        <div class="button-container">
+                            <button type="submit" class="btn-cadastrar">Cadastrar Funcionário</button>
+                            <div class="btn-shadow"></div>
+                        </div>
+                    </div>
                 </form>
+            </div>
+            
+            <!-- Botão Fechar Sistema movido para fora do form-container -->
+            <div class="buttons-wrapper">
+                <div class="button-container">
+                    <button class="btn-fechar"><a href="fechamento_sistema.html">Fechar Sistema</a></button>
+                    <div class="btn-shadow"></div>
+                </div>
             </div>
         </div>
     </div>
