@@ -7,7 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Sour+Gummy:wdth,wght@100..125,377&display=swap" rel="stylesheet">
-        
+    <script src="sistem.js"></script>  
+
     <style>
         /* Reset básico */
         * {
@@ -292,11 +293,6 @@
             font-weight: bold;
         }
 
-        .saldo {
-            color:#331294;
-            font-weight: bold;
-        }
-
         /* Totalizadores */
         .totals-container {
             width: 100%;
@@ -331,13 +327,13 @@
         }
 
         .total-despesas {
-            background-color: rgba(255, 57, 57, 0.1);
+            background-color: rgba(67, 41, 29, 0.1);
             border: 1px solid var(--cor-vermelho);
         }
 
         .total-saldo {
-            border: 1px solid #331294;
-            background-color: rgba(50, 60, 255, 0.158);
+            border: 1px solid #370b63;
+            background-color: rgba(176, 180, 253, 0.644);
         }
 
         /* Filtros */
@@ -553,8 +549,7 @@
 
         /* Efeito da sombra rosa sob o botão */
         .btn-container {
-            margin-top: 30px;
-            margin-bottom: 30px;
+            margin-top: 25px;
             position: relative;
             display: inline-block;
         }
@@ -708,15 +703,15 @@
             <div class="totals-container">
                 <div class="total-card total-receitas">
                     <h3>Total de Receitas</h3>
-                    <div class="value receita">R$ 25.450,00</div>
+                    <div class="value receita"></div>
                 </div>
                 <div class="total-card total-despesas">
                     <h3>Total de Despesas</h3>
-                    <div class="value despesa">R$ 18.325,75</div>
+                    <div class="value despesa"></div>
                 </div>
                 <div class="total-card total-saldo">
                     <h3>Saldo</h3>
-                    <div class="value saldo">R$ 7.124,25</div>
+                    <div class="value"></div>
                 </div>
             </div>
 
@@ -773,134 +768,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>15/05/2025</td>
-                            <td>Receita</td>
-                            <td>Vendas</td>
-                            <td>Vendas diárias - Loja</td>
-                            <td>Ana Silva</td>
-                            <td class="receita">R$ 1.850,00</td>
-                        </tr>
-                        <tr>
-                            <td>14/05/2025</td>
-                            <td>Despesa</td>
-                            <td>Fornecedores</td>
-                            <td>Pagamento Gelato Premium</td>
-                            <td>João Oliveira</td>
-                            <td class="despesa">R$ 2.450,75</td>
-                        </tr>
-                        <tr>
-                            <td>14/05/2025</td>
-                            <td>Receita</td>
-                            <td>Vendas</td>
-                            <td>Vendas diárias - Loja</td>
-                            <td>Ana Silva</td>
-                            <td class="receita">R$ 1.750,00</td>
-                        </tr>
-                        <tr>
-                            <td>13/05/2025</td>
-                            <td>Receita</td>
-                            <td>Vendas</td>
-                            <td>Evento Corporativo - Ice World</td>
-                            <td>Mariana Costa</td>
-                            <td class="receita">R$ 3.200,00</td>
-                        </tr>
-                        <tr>
-                            <td>12/05/2025</td>
-                            <td>Despesa</td>
-                            <td>Salários</td>
-                            <td>Adiantamento salarial - Equipe Vendas</td>
-                            <td>João Oliveira</td>
-                            <td class="despesa">R$ 3.500,00</td>
-                        </tr>
-                        <tr>
-                            <td>12/05/2025</td>
-                            <td>Receita</td>
-                            <td>Vendas</td>
-                            <td>Vendas diárias - Loja</td>
-                            <td>Ana Silva</td>
-                            <td class="receita">R$ 1.650,00</td>
-                        </tr>
-                        <tr>
-                            <td>10/05/2025</td>
-                            <td>Despesa</td>
-                            <td>Fornecedores</td>
-                            <td>Pagamento Doce Cone</td>
-                            <td>João Oliveira</td>
-                            <td class="despesa">R$ 1.250,00</td>
-                        </tr>
-                        <tr>
-                            <td>10/05/2025</td>
-                            <td>Receita</td>
-                            <td>Vendas</td>
-                            <td>Aniversário - Cliente Premium</td>
-                            <td>Mariana Costa</td>
-                            <td class="receita">R$ 2.800,00</td>
-                        </tr>
-                        <tr>
-                            <td>09/05/2025</td>
-                            <td>Despesa</td>
-                            <td>Utilidades</td>
-                            <td>Conta de energia</td>
-                            <td>João Oliveira</td>
-                            <td class="despesa">R$ 875,00</td>
-                        </tr>
-                        <tr>
-                            <td>08/05/2025</td>
-                            <td>Receita</td>
-                            <td>Vendas</td>
-                            <td>Vendas diárias - Loja</td>
-                            <td>Ana Silva</td>
-                            <td class="receita">R$ 1.700,00</td>
-                        </tr>
-                        <tr>
-                            <td>07/05/2025</td>
-                            <td>Despesa</td>
-                            <td>Aluguel</td>
-                            <td>Aluguel mensal - Loja</td>
-                            <td>João Oliveira</td>
-                            <td class="despesa">R$ 3.500,00</td>
-                        </tr>
-                        <tr>
-                            <td>05/05/2025</td>
-                            <td>Receita</td>
-                            <td>Vendas</td>
-                            <td>Casamento - Cliente VIP</td>
-                            <td>Mariana Costa</td>
-                            <td class="receita">R$ 4.500,00</td>
-                        </tr>
-                        <tr>
-                            <td>03/05/2025</td>
-                            <td>Despesa</td>
-                            <td>Impostos</td>
-                            <td>Impostos mensais</td>
-                            <td>João Oliveira</td>
-                            <td class="despesa">R$ 2.750,00</td>
-                        </tr>
-                        <tr>
-                            <td>02/05/2025</td>
-                            <td>Receita</td>
-                            <td>Vendas</td>
-                            <td>Vendas diárias - Loja</td>
-                            <td>Ana Silva</td>
-                            <td class="receita">R$ 1.600,00</td>
-                        </tr>
-                        <tr>
-                            <td>01/05/2025</td>
-                            <td>Receita</td>
-                            <td>Vendas</td>
-                            <td>Vendas diárias - Loja</td>
-                            <td>Ana Silva</td>
-                            <td class="receita">R$ 1.450,00</td>
-                        </tr>
-                        <tr>
-                            <td>01/05/2025</td>
-                            <td>Despesa</td>
-                            <td>Fornecedores</td>
-                            <td>Pagamento Sweet Toppings</td>
-                            <td>João Oliveira</td>
-                            <td class="despesa">R$ 1.250,00</td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
