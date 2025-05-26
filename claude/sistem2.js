@@ -1,467 +1,363 @@
-// ========================================
-// JAVASCRIPT PARA LINKS DO SISTEMA - NÍVEL INICIANTE
-// ========================================
+// ===== EXPLICAÇÃO INICIAL =====
+// Este JavaScript controla o sistema de fechamento da sorveteria
+// Ele gerencia horários, validações e cálculos do dia
 
-// Aguarda a página carregar completamente
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('Página carregada!');
+// ===== 1. VARIÁVEIS GLOBAIS - Informações que ficam guardadas durante toda a execução =====
+// Dados do sistema que serão usados em várias funções
+let dadosSistema = {
+    horarioAbertura: '08:30',
+    dataAbertura: '15/05/2025',
+    totalVendas: 1250.00,
+    totalDespesas: 320.00,
+    funcionariosAutorizados: ['001', '002', '003', '004', '005'] // IDs válidos
+};
+
+// Lista de funcionários cadastrados (simulação de banco de dados)
+let funcionarios = [
+    { id: '001', nome: 'Ana Silva', cargo: 'Gerente' },
+    { id: '002', nome: 'João Oliveira', cargo: 'Vendedor' },
+    { id: '003', nome: 'Mariana Costa', cargo: 'Atendente' },
+    { id: '004', nome: 'Pedro Santos', cargo: 'Caixa' },
+    { id: '005', nome: 'Julia Ferreira', cargo: 'Supervisor' }
+];
+
+// ===== 2. FUNÇÃO PARA FORMATAR DINHEIRO =====
+// Esta função pega um número e transforma em formato brasileiro (R$ 1.234,56)
+function formatarDinheiro(valor) {
+    return 'R$ ' + valor.toLocaleString('pt-BR', {
+        minimumFractionDigits: 2, // Sempre mostra 2 casas decimais
+        maximumFractionDigits: 2
+    });
+}
+
+// ===== 3. FUNÇÃO PARA PEGAR DATA E HORA ATUAL =====
+function obterDataHoraAtual() {
+    const agora = new Date(); // Cria objeto com data/hora atual
     
-    // ========================================
-    // NAVEGAÇÃO DO MENU SUPERIOR
-    // ========================================
+    // Extrai cada parte da data/hora
+    const horas = agora.getHours().toString().padStart(2, '0');     // Adiciona zero à esquerda se necessário
+    const minutos = agora.getMinutes().toString().padStart(2, '0');
+    const dia = agora.getDate().toString().padStart(2, '0');
+    const mes = (agora.getMonth() + 1).toString().padStart(2, '0'); // +1 porque Janeiro = 0
+    const ano = agora.getFullYear();
     
-    // Função para navegar entre as páginas principais
-    function navegarPagina(pagina) {
-        console.log('Navegando para: ' + pagina);
-        
-        // Simula navegação (em um sistema real, usaria window.location.href)
-        switch(pagina) {
-            case 'cadastro':
-                alert('Navegando para seção de Cadastro');
-                // window.location.href = 'claudeproduto.html';
-                break;
-            case 'movimento':
-                alert('Navegando para Movimento Financeiro');
-                // window.location.href = 'movimento_financeiro.html';
-                break;
-            case 'pesquisa':
-                alert('Navegando para Pesquisa');
-                // window.location.href = 'pequisa_cliente.html';
-                break;
+    // Retorna objeto com as informações formatadas
+    return {
+        horario: `${horas}:${minutos}`,
+        data: `${dia}/${mes}/${ano}`,
+        completo: `${horas}:${minutos} - ${dia}/${mes}/${ano}`
+    };
+}
+
+// ===== 4. FUNÇÃO PARA CALCULAR TEMPO DE FUNCIONAMENTO =====
+function calcularTempoFuncionamento() {
+    // Pega horário atual
+    const horaAtual = obterDataHoraAtual();
+    
+    // Simula cálculo de tempo (em um sistema real, você salvaria o horário de abertura)
+    const abertura = dadosSistema.horarioAbertura.split(':');
+    const agora = horaAtual.horario.split(':');
+    
+    // Converte para minutos para fazer o cálculo
+    const minutosAbertura = parseInt(abertura[0]) * 60 + parseInt(abertura[1]);
+    const minutosAgora = parseInt(agora[0]) * 60 + parseInt(agora[1]);
+    
+    // Calcula diferença
+    const diferenca = minutosAgora - minutosAbertura;
+    const horasFuncionamento = Math.floor(diferenca / 60);
+    const minutosRestantes = diferenca % 60;
+    
+    return `${horasFuncionamento}h ${minutosRestantes}min`;
+}
+
+// ===== 5. FUNÇÃO PARA VALIDAR ID DO FUNCIONÁRIO =====
+function validarFuncionario(id) {
+    // Verifica se o ID está na lista de funcionários autorizados
+    return dadosSistema.funcionariosAutorizados.includes(id);
+}
+
+// ===== 6. FUNÇÃO PARA BUSCAR DADOS DO FUNCIONÁRIO =====
+function buscarFuncionario(id) {
+    // Procura o funcionário na lista pelo ID
+    for (let i = 0; i < funcionarios.length; i++) {
+        if (funcionarios[i].id === id) {
+            return funcionarios[i]; // Retorna os dados do funcionário
         }
     }
+    return null; // Retorna null se não encontrar
+}
+
+// ===== 7. FUNÇÃO PARA ATUALIZAR HORÁRIO DE FECHAMENTO =====
+function atualizarHorarioFechamento() {
+    console.log('Atualizando horário de fechamento...'); // Mensagem para debug
     
-    // ========================================
-    // NAVEGAÇÃO DO MENU LATERAL
-    // ========================================
+    // Pega a data e hora atual
+    const horaAtual = obterDataHoraAtual();
     
-    // Função para navegar no menu lateral
-    function navegarMenuLateral(opcao) {
-        console.log('Menu lateral selecionado: ' + opcao);
-        
-        // Remove a classe 'active' de todos os itens
-        var itensMenu = document.querySelectorAll('.sidebar li');
-        for(var i = 0; i < itensMenu.length; i++) {
-            itensMenu[i].classList.remove('active');
-        }
-        
-        // Simula navegação do menu lateral
-        switch(opcao) {
-            case 'produto':
-                alert('Navegando para Cadastro de Produto');
-                // window.location.href = 'claudeproduto.html';
-                break;
-            case 'cliente':
-                alert('Você já está na página de Cliente');
-                // Já está na página atual
-                break;
-            case 'funcionario':
-                alert('Navegando para Cadastro de Funcionário');
-                // window.location.href = 'funcionario-html.html';
-                break;
-            case 'servico':
-                alert('Navegando para Cadastro de Serviço');
-                // window.location.href = 'servico-html.html';
-                break;
-        }
+    // Encontra o elemento no HTML e atualiza o texto
+    const elementoHorario = document.getElementById('horario-fechamento');
+    if (elementoHorario) {
+        elementoHorario.textContent = horaAtual.completo;
+        console.log('Horário atualizado para:', horaAtual.completo);
+    }
+}
+
+// ===== 8. FUNÇÃO PARA ATUALIZAR RESUMO DO DIA =====
+function atualizarResumo() {
+    console.log('Atualizando resumo do dia...');
+    
+    // Calcula o saldo (receitas - despesas)
+    const saldo = dadosSistema.totalVendas - dadosSistema.totalDespesas;
+    
+    // Busca os elementos na página e atualiza os valores
+    const elementoVendas = document.querySelector('.resumo-item:nth-child(3) span');
+    const elementoDespesas = document.querySelector('.resumo-item:nth-child(4) span');
+    const elementoSaldo = document.querySelector('.resumo-saldo');
+    
+    if (elementoVendas) {
+        elementoVendas.textContent = formatarDinheiro(dadosSistema.totalVendas);
     }
     
-    // ========================================
-    // FORMULÁRIO DE CLIENTE
-    // ========================================
-    
-    // Função para cadastrar cliente
-    function cadastrarCliente() {
-        console.log('Iniciando cadastro de cliente...');
-        
-        // Pega os valores dos campos
-        var nome = document.getElementById('nomeCliente').value;
-        var cpf = document.getElementById('cpfCliente').value;
-        var email = document.getElementById('emailCliente').value;
-        var telefone = document.getElementById('telefoneCliente').value;
-        var endereco = document.getElementById('enderecoCliente').value;
-        
-        // Validação simples
-        if(nome === '') {
-            alert('Por favor, preencha o nome do cliente!');
-            return false;
-        }
-        
-        if(cpf === '') {
-            alert('Por favor, preencha o CPF do cliente!');
-            return false;
-        }
-        
-        if(email === '') {
-            alert('Por favor, preencha o email do cliente!');
-            return false;
-        }
-        
-        // Se chegou até aqui, os dados estão válidos
-        alert('Cliente cadastrado com sucesso!\n\n' +
-              'Nome: ' + nome + '\n' +
-              'CPF: ' + cpf + '\n' +
-              'Email: ' + email + '\n' +
-              'Telefone: ' + telefone + '\n' +
-              'Endereço: ' + endereco);
-        
-        // Limpa o formulário
-        document.getElementById('nomeCliente').value = '';
-        document.getElementById('cpfCliente').value = '';
-        document.getElementById('emailCliente').value = '';
-        document.getElementById('telefoneCliente').value = '';
-        document.getElementById('enderecoCliente').value = '';
-        
-        return false; // Impede o envio real do formulário
+    if (elementoDespesas) {
+        elementoDespesas.textContent = formatarDinheiro(dadosSistema.totalDespesas);
     }
     
-    // ========================================
-    // LINKS DO FOOTER
-    // ========================================
-    
-    // Função para links do footer
-    function navegarFooter(destino) {
-        console.log('Navegando pelo footer para: ' + destino);
+    if (elementoSaldo) {
+        elementoSaldo.textContent = `Saldo Diário: ${formatarDinheiro(saldo)}`;
         
-        switch(destino) {
-            case 'inicio':
-                alert('Navegando para página Inicial');
-                // window.location.href = 'index.html';
-                break;
-            case 'sobre':
-                alert('Navegando para página Sobre Nós');
-                // window.location.href = 'sobre.html';
-                break;
-            case 'servicos':
-                alert('Navegando para página de Serviços');
-                // window.location.href = 'servicos.html';
-                break;
-            case 'contato':
-                alert('Navegando para página de Contato');
-                // window.location.href = 'contato.html';
-                break;
-            case 'facebook':
-                alert('Abrindo Facebook da PAIA Systems');
-                // window.open('https://facebook.com/paiasystems', '_blank');
-                break;
-            case 'instagram':
-                alert('Abrindo Instagram da PAIA Systems');
-                // window.open('https://instagram.com/paiasystems', '_blank');
-                break;
-            case 'linkedin':
-                alert('Abrindo LinkedIn da PAIA Systems');
-                // window.open('https://linkedin.com/company/paiasystems', '_blank');
-                break;
-            case 'tiktok':
-                alert('Abrindo TikTok da PAIA Systems');
-                // window.open('https://tiktok.com/@paiasystems', '_blank');
-                break;
-            case 'privacidade':
-                alert('Abrindo Política de Privacidade');
-                // window.location.href = 'politica-privacidade.html';
-                break;
-            case 'termos':
-                alert('Abrindo Termos de Uso');
-                // window.location.href = 'termos-uso.html';
-                break;
-        }
-    }
-    
-    // ========================================
-    // FUNÇÃO PARA FECHAR SISTEMA
-    // ========================================
-    
-    function fecharSistema() {
-        console.log('Tentando fechar sistema...');
-        
-        var confirmacao = confirm('Tem certeza que deseja fechar o sistema?');
-        
-        if(confirmacao) {
-            alert('Sistema sendo fechado...');
-            // window.location.href = 'fechamento_sistema.html';
+        // Muda a cor baseado no saldo
+        if (saldo > 0) {
+            elementoSaldo.style.color = '#4CAF50'; // Verde para lucro
+        } else if (saldo < 0) {
+            elementoSaldo.style.color = '#F44336'; // Vermelho para prejuízo
         } else {
-            alert('Operação cancelada!');
+            elementoSaldo.style.color = '#FF9800'; // Laranja para empate
         }
     }
-    
-    // ========================================
-    // EVENTOS DOS LINKS (MÉTODO INICIANTE)
-    // ========================================
-    
-    // Links do menu superior
-    var linkCadastro = document.querySelector('a[href="claudeproduto.html"]');
-    if(linkCadastro) {
-        linkCadastro.onclick = function(e) {
-            e.preventDefault();
-            navegarPagina('cadastro');
-        };
-    }
-    
-    var linkMovimento = document.querySelector('a[href="movimento_financeiro.html"]');
-    if(linkMovimento) {
-        linkMovimento.onclick = function(e) {
-            e.preventDefault();
-            navegarPagina('movimento');
-        };
-    }
-    
-    var linkPesquisa = document.querySelector('a[href="pequisa_cliente.html"]');
-    if(linkPesquisa) {
-        linkPesquisa.onclick = function(e) {
-            e.preventDefault();
-            navegarPagina('pesquisa');
-        };
-    }
-    
-    // Links do menu lateral
-    var linkProduto = document.querySelector('.sidebar a[href="claudeproduto.html"]');
-    if(linkProduto) {
-        linkProduto.onclick = function(e) {
-            e.preventDefault();
-            navegarMenuLateral('produto');
-        };
-    }
-    
-    var linkCliente = document.querySelector('.sidebar a[href="claudecliente.html"]');
-    if(linkCliente) {
-        linkCliente.onclick = function(e) {
-            e.preventDefault();
-            navegarMenuLateral('cliente');
-        };
-    }
-    
-    var linkFuncionario = document.querySelector('.sidebar a[href="funcionario-html.html"]');
-    if(linkFuncionario) {
-        linkFuncionario.onclick = function(e) {
-            e.preventDefault();
-            navegarMenuLateral('funcionario');
-        };
-    }
-    
-    var linkServico = document.querySelector('.sidebar a[href="servico-html.html"]');
-    if(linkServico) {
-        linkServico.onclick = function(e) {
-            e.preventDefault();
-            navegarMenuLateral('servico');
-        };
-    }
-    
-    // Botão de cadastrar cliente
-    var botaoCadastrar = document.querySelector('.btn-cadastrar');
-    if(botaoCadastrar) {
-        botaoCadastrar.onclick = function(e) {
-            e.preventDefault();
-            cadastrarCliente();
-        };
-    }
-    
-    // Botão fechar sistema
-    var botaoFechar = document.querySelector('.btn-fechar a[href="fechamento_sistema.html"]');
-    if(botaoFechar) {
-        botaoFechar.onclick = function(e) {
-            e.preventDefault();
-            fecharSistema();
-        };
-    }
-    
-    // Links do footer - Links rápidos
-    var linkInicio = document.querySelector('.footer a[href="index.html"]');
-    if(linkInicio) {
-        linkInicio.onclick = function(e) {
-            e.preventDefault();
-            navegarFooter('inicio');
-        };
-    }
-    
-    var linkSobre = document.querySelector('.footer a[href="sobre.html"]');
-    if(linkSobre) {
-        linkSobre.onclick = function(e) {
-            e.preventDefault();
-            navegarFooter('sobre');
-        };
-    }
-    
-    var linkServicos = document.querySelector('.footer a[href="servicos.html"]');
-    if(linkServicos) {
-        linkServicos.onclick = function(e) {
-            e.preventDefault();
-            navegarFooter('servicos');
-        };
-    }
-    
-    var linkContato = document.querySelector('.footer a[href="contato.html"]');
-    if(linkContato) {
-        linkContato.onclick = function(e) {
-            e.preventDefault();
-            navegarFooter('contato');
-        };
-    }
-    
-    // Redes sociais
-    var linkFacebook = document.querySelector('.social-icon.facebook');
-    if(linkFacebook) {
-        linkFacebook.onclick = function(e) {
-            e.preventDefault();
-            navegarFooter('facebook');
-        };
-    }
-    
-    var linkInstagram = document.querySelector('.social-icon.instagram');
-    if(linkInstagram) {
-        linkInstagram.onclick = function(e) {
-            e.preventDefault();
-            navegarFooter('instagram');
-        };
-    }
-    
-    var linkLinkedin = document.querySelector('.social-icon.linkedin');
-    if(linkLinkedin) {
-        linkLinkedin.onclick = function(e) {
-            e.preventDefault();
-            navegarFooter('linkedin');
-        };
-    }
-    
-    var linkTiktok = document.querySelector('.social-icon.tiktok');
-    if(linkTiktok) {
-        linkTiktok.onclick = function(e) {
-            e.preventDefault();
-            navegarFooter('tiktok');
-        };
-    }
-    
-    // ========================================
-    // FORMATAÇÃO AUTOMÁTICA DOS CAMPOS
-    // ========================================
-    
-    // Formatação do CPF
-    var campoCpf = document.getElementById('cpfCliente');
-    if(campoCpf) {
-        campoCpf.oninput = function() {
-            var valor = this.value.replace(/\D/g, ''); // Remove tudo que não é número
-            
-            if(valor.length <= 11) {
-                valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
-                valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
-                valor = valor.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-            }
-            
-            this.value = valor;
-        };
-    }
-    
-    // Formatação do telefone
-    var campoTelefone = document.getElementById('telefoneCliente');
-    if(campoTelefone) {
-        campoTelefone.oninput = function() {
-            var valor = this.value.replace(/\D/g, ''); // Remove tudo que não é número
-            
-            if(valor.length <= 11) {
-                if(valor.length <= 10) {
-                    valor = valor.replace(/(\d{2})(\d)/, '($1) $2');
-                    valor = valor.replace(/(\d{4})(\d)/, '$1-$2');
-                } else {
-                    valor = valor.replace(/(\d{2})(\d)/, '($1) $2');
-                    valor = valor.replace(/(\d{5})(\d)/, '$1-$2');
-                }
-            }
-            
-            this.value = valor;
-        };
-    }
-    
-    // ========================================
-    // MENSAGEM DE BOAS-VINDAS
-    // ========================================
-    
-    console.log('Sistema de links carregado com sucesso!');
-    console.log('Todas as funções estão prontas para uso.');
-    
-}); // Fim do DOMContentLoaded
-
-// ========================================
-// FUNÇÕES GLOBAIS (PODEM SER CHAMADAS A QUALQUER MOMENTO)
-// ========================================
-
-// Função para mostrar informações do sistema
-function mostrarInfoSistema() {
-    alert('Sistema de Gerenciamento PAIA\n' +
-          'Versão: 1.0\n' +
-          'Desenvolvido para controle de estoque\n' +
-          'Página atual: Cadastro de Cliente');
 }
 
-// Função para limpar todos os campos
-function limparFormulario() {
-    var confirmacao = confirm('Tem certeza que deseja limpar todos os campos?');
+// ===== 9. FUNÇÃO PARA MOSTRAR INFORMAÇÕES DETALHADAS =====
+function mostrarInformacoesDetalhadas() {
+    const tempoFuncionamento = calcularTempoFuncionamento();
+    const saldo = dadosSistema.totalVendas - dadosSistema.totalDespesas;
     
-    if(confirmacao) {
-        document.getElementById('nomeCliente').value = '';
-        document.getElementById('cpfCliente').value = '';
-        document.getElementById('emailCliente').value = '';
-        document.getElementById('telefoneCliente').value = '';
-        document.getElementById('enderecoCliente').value = '';
+    // Cria uma mensagem detalhada
+    const mensagem = `
+🏪 RELATÓRIO DO DIA 🏪
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📅 Data: ${dadosSistema.dataAbertura}
+⏰ Tempo de Funcionamento: ${tempoFuncionamento}
+💰 Total de Vendas: ${formatarDinheiro(dadosSistema.totalVendas)}
+💸 Total de Despesas: ${formatarDinheiro(dadosSistema.totalDespesas)}
+💵 Saldo Final: ${formatarDinheiro(saldo)}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    `;
+    
+    // Mostra a mensagem (em um sistema real, isso seria salvo em arquivo/banco)
+    alert(mensagem);
+}
+
+// ===== 10. FUNÇÃO PRINCIPAL DE FECHAMENTO =====
+function fecharSistema() {
+    console.log('Iniciando processo de fechamento...');
+    
+    // Pega o ID digitado pelo usuário
+    const campoId = document.getElementById('funcionario-id');
+    const idFuncionario = campoId.value.trim(); // trim() remove espaços em branco
+    
+    // VALIDAÇÃO 1: Verifica se o campo está vazio
+    if (idFuncionario === '') {
+        alert('❌ Por favor, insira o ID do funcionário para fechar o sistema!');
+        campoId.focus(); // Coloca o cursor no campo
+        return; // Para a execução da função
+    }
+    
+    // VALIDAÇÃO 2: Verifica se o ID tem o formato correto (3 dígitos)
+    if (idFuncionario.length !== 3 || isNaN(idFuncionario)) {
+        alert('❌ ID inválido! O ID deve ter exatamente 3 dígitos numéricos.');
+        campoId.focus();
+        return;
+    }
+    
+    // VALIDAÇÃO 3: Verifica se o funcionário está autorizado
+    if (!validarFuncionario(idFuncionario)) {
+        alert('❌ Funcionário não autorizado para fechar o sistema!');
+        campoId.focus();
+        return;
+    }
+    
+    // Busca os dados do funcionário
+    const funcionario = buscarFuncionario(idFuncionario);
+    
+    if (funcionario) {
+        // Mostra confirmação
+        const confirmar = confirm(
+            `Confirmar fechamento do sistema?\n\n` +
+            `👤 Funcionário: ${funcionario.nome}\n` +
+            `💼 Cargo: ${funcionario.cargo}\n` +
+            `🆔 ID: ${funcionario.id}\n\n` +
+            `Clique em OK para confirmar.`
+        );
         
-        alert('Formulário limpo com sucesso!');
+        if (confirmar) {
+            // Executa o fechamento
+            executarFechamento(funcionario);
+        }
+    } else {
+        alert('❌ Erro ao buscar dados do funcionário!');
     }
 }
 
-// Função para validar email
-function validarEmail(email) {
-    var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
+// ===== 11. FUNÇÃO PARA EXECUTAR O FECHAMENTO =====
+function executarFechamento(funcionario) {
+    console.log('Executando fechamento do sistema...');
+    
+    // Simula salvamento dos dados (em um sistema real, enviaria para servidor)
+    const dadosFechamento = {
+        funcionario: funcionario,
+        horarioFechamento: obterDataHoraAtual().completo,
+        vendas: dadosSistema.totalVendas,
+        despesas: dadosSistema.totalDespesas,
+        saldo: dadosSistema.totalVendas - dadosSistema.totalDespesas,
+        tempoFuncionamento: calcularTempoFuncionamento()
+    };
+    
+    // Mostra informações detalhadas
+    mostrarInformacoesDetalhadas();
+    
+    // Mensagem de sucesso
+    alert(
+        `✅ Sistema fechado com sucesso!\n\n` +
+        `👤 Responsável: ${funcionario.nome}\n` +
+        `⏰ Fechado às: ${dadosFechamento.horarioFechamento}\n\n` +
+        `Obrigado e até amanhã! 🍦`
+    );
+    
+    // Simula log do sistema
+    console.log('Dados do fechamento:', dadosFechamento);
+    
+    // Em um sistema real, aqui você redirecionaria para a página de login
+    // window.location.href = 'claudelogin.html';
 }
 
-// Função para validar CPF (validação simples)
-function validarCPF(cpf) {
-    cpf = cpf.replace(/\D/g, ''); // Remove caracteres não numéricos
+// ===== 12. FUNÇÃO PARA ADICIONAR EFEITOS VISUAIS =====
+function adicionarEfeitosVisuais() {
+    // Efeito de hover no campo de ID
+    const campoId = document.getElementById('funcionario-id');
     
-    if(cpf.length !== 11) {
-        return false;
+    if (campoId) {
+        // Quando o usuário clica no campo
+        campoId.addEventListener('focus', function() {
+            this.style.borderColor = '#ff69b4';
+            this.style.boxShadow = '0 0 10px rgba(255, 105, 180, 0.3)';
+        });
+        
+        // Quando o usuário sai do campo
+        campoId.addEventListener('blur', function() {
+            this.style.borderColor = '#fdb4ce';
+            this.style.boxShadow = 'none';
+        });
+        
+        // Quando o usuário digita
+        campoId.addEventListener('input', function() {
+            // Permite apenas números
+            this.value = this.value.replace(/[^0-9]/g, '');
+            
+            // Limita a 3 dígitos
+            if (this.value.length > 3) {
+                this.value = this.value.slice(0, 3);
+            }
+        });
     }
-    
-    // Verifica se todos os dígitos são iguais
-    if(/^(\d)\1{10}$/.test(cpf)) {
-        return false;
-    }
-    
-    return true; // Validação básica
 }
 
-// ========================================
-// COMENTÁRIOS PARA INICIANTES
-// ========================================
+// ===== 13. FUNÇÃO PARA ATUALIZAR HORÁRIO AUTOMATICAMENTE =====
+function iniciarAtualizacaoAutomatica() {
+    // Atualiza o horário a cada 30 segundos
+    setInterval(function() {
+        atualizarHorarioFechamento();
+        console.log('Horário atualizado automaticamente');
+    }, 30000); // 30000 milissegundos = 30 segundos
+}
 
-/*
-EXPLICAÇÃO DO CÓDIGO PARA INICIANTES:
+// ===== 14. FUNÇÃO PRINCIPAL DE INICIALIZAÇÃO =====
+function inicializar() {
+    console.log('🚀 Sistema de fechamento iniciado!');
+    
+    // Atualiza informações da página
+    atualizarHorarioFechamento();
+    atualizarResumo();
+    
+    // Adiciona efeitos visuais
+    adicionarEfeitosVisuais();
+    
+    // Inicia atualização automática do horário
+    iniciarAtualizacaoAutomatica();
+    
+    // Adiciona evento ao botão de fechar
+    const botaoFechar = document.querySelector('.btn-fechar');
+    if (botaoFechar) {
+        // Remove o link padrão e adiciona nossa função personalizada
+        botaoFechar.addEventListener('click', function(evento) {
+            evento.preventDefault(); // Impede o link de funcionar
+            fecharSistema(); // Chama nossa função de fechamento
+        });
+    }
+    
+    // Adiciona evento para tecla Enter no campo de ID
+    const campoId = document.getElementById('funcionario-id');
+    if (campoId) {
+        campoId.addEventListener('keypress', function(evento) {
+            // Se o usuário pressionar Enter, executa o fechamento
+            if (evento.key === 'Enter') {
+                fecharSistema();
+            }
+        });
+    }
+    
+    console.log('✅ Sistema configurado e pronto para uso!');
+}
 
-1. DOMContentLoaded: Espera a página carregar completamente antes de executar o código
+// ===== 15. FUNÇÃO PARA SIMULAR DADOS ALEATÓRIOS (DEMONSTRAÇÃO) =====
+function simularDadosAleatorios() {
+    // Gera valores aleatórios para demonstração
+    dadosSistema.totalVendas = Math.random() * 2000 + 500;  // Entre 500 e 2500
+    dadosSistema.totalDespesas = Math.random() * 800 + 200; // Entre 200 e 1000
+    
+    // Atualiza a exibição
+    atualizarResumo();
+    
+    console.log('Dados aleatórios gerados para demonstração');
+}
 
-2. querySelector: Encontra elementos HTML na página usando seletores CSS
+// ===== 16. EXECUÇÃO QUANDO A PÁGINA CARREGAR =====
+// Quando o HTML estiver completamente carregado, executa a inicialização
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('📄 Página carregada, iniciando sistema...');
+    inicializar();
+});
 
-3. onclick: Define o que acontece quando alguém clica em um elemento
+// Também executa quando a janela carregar (compatibilidade)
+window.addEventListener('load', function() {
+    console.log('🪟 Janela carregada completamente');
+});
 
-4. preventDefault(): Impede que o link navegue para outra página (para nossos testes)
+// ===== 17. FUNÇÃO DE TESTE PARA DESENVOLVEDORES =====
+function testarSistema() {
+    console.log('🧪 Executando testes do sistema...');
+    
+    // Testa formatação de dinheiro
+    console.log('Teste formatação:', formatarDinheiro(1234.56));
+    
+    // Testa validação de funcionário
+    console.log('Teste validação (001):', validarFuncionario('001'));
+    console.log('Teste validação (999):', validarFuncionario('999'));
+    
+    // Testa busca de funcionário
+    console.log('Teste busca funcionário:', buscarFuncionario('001'));
+    
+    console.log('✅ Testes concluídos!');
+}
 
-5. alert(): Mostra uma caixa de mensagem para o usuário
-
-6. confirm(): Mostra uma caixa perguntando "sim" ou "não"
-
-7. value: Pega ou define o valor de um campo de input
-
-8. replace(): Substitui texto (usado para formatar CPF e telefone)
-
-9. test(): Testa se um texto corresponde a um padrão (usado para validar email)
-
-PARA USAR EM PRODUÇÃO:
-- Descomente as linhas com window.location.href para navegação real
-- Conecte com um banco de dados para salvar os dados
-- Adicione mais validações conforme necessário
-- Implemente autenticação de usuário
-
-DICAS:
-- Sempre teste seu código no console do navegador (F12)
-- Use console.log() para debug
-- Mantenha o código organizado com comentários
-- Valide sempre os dados antes de processar
-*/
+// ===== FIM DO CÓDIGO =====
+// Para testar o sistema, abra o console do navegador (F12) e digite: testarSistema()
